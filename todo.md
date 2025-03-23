@@ -1,0 +1,6 @@
+- [] Reorganize project in folders (Config, Models, Databases ...)
+- [] Use postgreSQL DB
+- [] Add endpoints OpenAPI documentation
+- [] Add tests
+- [] Add authentication 
+- [] Add authorization (RequireAuthorization)
