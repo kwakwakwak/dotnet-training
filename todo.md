@@ -1,6 +1,13 @@
 - [] Reorganize project in folders (Config, Models, Databases ...)
-- [] Use postgreSQL DB
+- [x] Use postgreSQL DB
+- [] Change POST payload
+- [] Stop exposing the local connection string! 
+- [] Add a new List model to store several TODO lists
 - [] Add endpoints OpenAPI documentation
+- [] Add exception catching
+- [] Add logs
 - [] Add tests
+- [] Add secret management (PG_DSN...)
+- [] Add Helm deployment to a simple K8s cluster
 - [] Add authentication 
 - [] Add authorization (RequireAuthorization)
