@@ -3,7 +3,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TodoDb>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+);
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -44,25 +45,23 @@ static async Task<IResult> GetAllTodos(TodoDb db)
     return TypedResults.Ok(await db.Todos.Select(x => new TodoItemDTO(x)).ToArrayAsync());
 }
 
-static async Task<IResult> GetCompleteTodos(TodoDb db) {
-    return TypedResults.Ok(await db.Todos.Where(t => t.IsComplete).Select(x => new TodoItemDTO(x)).ToListAsync());
+static async Task<IResult> GetCompleteTodos(TodoDb db)
+{
+    return TypedResults.Ok(
+        await db.Todos.Where(t => t.IsComplete).Select(x => new TodoItemDTO(x)).ToListAsync()
+    );
 }
 
 static async Task<IResult> GetTodo(int id, TodoDb db)
 {
-    return await db.Todos.FindAsync(id)
-        is Todo todo
-            ? TypedResults.Ok(new TodoItemDTO(todo))
-            : TypedResults.NotFound();
+    return await db.Todos.FindAsync(id) is Todo todo
+        ? TypedResults.Ok(new TodoItemDTO(todo))
+        : TypedResults.NotFound();
 }
 
 static async Task<IResult> CreateTodo(TodoItemDTO todoItemDTO, TodoDb db)
 {
-    var todoItem = new Todo
-    {
-        IsComplete = todoItemDTO.IsComplete,
-        Name = todoItemDTO.Name
-    };
+    var todoItem = new Todo { IsComplete = todoItemDTO.IsComplete, Name = todoItemDTO.Name };
 
     db.Todos.Add(todoItem);
     await db.SaveChangesAsync();
@@ -76,7 +75,8 @@ static async Task<IResult> UpdateTodo(int id, TodoItemDTO todoItemDTO, TodoDb db
 {
     var todo = await db.Todos.FindAsync(id);
 
-    if (todo is null) return TypedResults.NotFound();
+    if (todo is null)
+        return TypedResults.NotFound();
 
     todo.Name = todoItemDTO.Name;
     todo.IsComplete = todoItemDTO.IsComplete;

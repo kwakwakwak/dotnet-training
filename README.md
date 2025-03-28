@@ -16,7 +16,7 @@ The goal is to improve the API to make it (almost) production ready!
     * Add tests
     * Add Helm deployment to a simple K8s cluster
 
-* Make it secure
+* Make it more secure
     * Add error handling
     * Add logs
     * Use secrets management
