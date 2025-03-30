@@ -1,12 +1,14 @@
-- [] Reorganize project in folders (Config, Models, Databases ...)
-- [x] Use postgreSQL DB
+- [x] Use a postgreSQL DB instead of in-memory DB
+- [] Reorganize project to follow hexagonal architecture
+- [] Add a diagram to explain the architecture in the README
 - [] Change POST payload
-- [] Stop exposing the local connection string! 
-- [] Add a new List model to store several TODO lists
-- [] Add endpoints OpenAPI documentation
 - [] Add exception catching
 - [] Add logs
 - [] Add tests
+- [] Add CI jobs (linting, testing)
+- [] Stop storing the password local connection string (anyway it's a dummy password...)
+- [] Add a new List model to store several TODO lists
+- [] Add endpoints OpenAPI documentation
 - [] Add secret management (PG_DSN...)
 - [] Add Helm deployment to a simple K8s cluster
 - [] Add authentication 
